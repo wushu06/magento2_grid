@@ -1,0 +1,17 @@
+<!--
+/*
+ * SussexDev_Sample
+
+ * @category   SussexDev
+ * @package    SussexDev_Sample
+ * @copyright  Copyright (c) 2018 Scott Parsons
+ * @license    https://github.com/ScottParsons/module-sampleuicomponent/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hmu_Api::data" title="Hook me up" module="Hmu_Api" sortOrder="75" resource="Hmu_Api::data"
+             action="hmuadmin/hmu/index"/>
+    </menu>
+</config>
