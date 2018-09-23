@@ -102,4 +102,11 @@ class Hmu extends \Magento\Framework\Model\AbstractModel implements HmuInterface
     {
         return $this->setData(self::ENTITY_ID, $id);
     }
+
+    public function getDefaultValues()
+    {
+        $values = [];
+
+        return $values;
+    }
 }

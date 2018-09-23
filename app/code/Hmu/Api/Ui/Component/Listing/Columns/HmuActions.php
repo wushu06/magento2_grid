@@ -51,14 +51,31 @@ class HmuActions extends Column
         if (isset($dataSource['data']['items'])) {
             $storeId = $this->context->getFilterParam('store_id');
             foreach ($dataSource['data']['items'] as &$item) {
-                $item[$this->getData('name')]['edit'] = [
-                    'href' => $this->_urlBuilder->getUrl(
-                        'hmuadmin/hmu/edit',
-                        ['id' => $item['id'], 'store' => $storeId]
-                    ),
-                    'label' => __('Edit'),
-                    'hidden' => false,
-                ];
+                $item[$this->getData('name')] =
+                    [
+                    'edit' => [
+                                    'href' => $this->_urlBuilder->getUrl(
+                                        'hmuadmin/hmu/edit',
+                                        ['id' => $item['id'], 'store' => $storeId]
+                                    ),
+                                    'label' => __('Edit'),
+                                    'hidden' => false,
+                                ],
+
+                    'delete' => [
+                            'href' => $this->_urlBuilder->getUrl(
+                                'hmuadmin/hmu/delete',
+                                [
+                                    'id' => $item['id']
+                                ]
+                            ),
+                            'label' => __('Delete'),
+                            'confirm' => [
+                                'title' => __('Delete "${ $.$data.data_title }"'),
+                                'message' => __('Are you sure you want to delete the Data: "${ $.$data.data_title }"?')
+                            ]
+                        ]
+                    ];
             }
         }
         return $dataSource;

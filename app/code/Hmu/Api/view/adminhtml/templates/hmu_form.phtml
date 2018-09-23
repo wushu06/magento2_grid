@@ -1,0 +1,75 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->create('\Magento\Store\Model\StoreManagerInterface');
+$baseURL_l = $social_image_url = $storeManager->getStore()->getBaseUrl();
+?>
+<form action="<?php /* @escapeNotVerified */
+echo $this->getUrl('hmuadmin/hmu/post') ?>" method="post" id="form-validate" enctype="multipart/form-data"
+      autocomplete="off" data-mage-init='{"validation":{}}' data-hasrequired="<?php /* @escapeNotVerified */
+echo __('* Required Fields') ?>">
+    <div class="field required">
+        <label for="email_address" class="label"><span><?php /* @escapeNotVerified */
+                echo __('Name') ?></span><span class="span">*</span></label>
+        <div class="control">
+            <input type="text" name="hmu_name" autocomplete="email" id="hmu_name" value=""
+                   title="<?php /* @escapeNotVerified */
+                   echo __('Hmu name') ?>" class="input-text">
+        </div>
+    </div>
+    <br/>
+    <div class="field required">
+        <label for="email_address" class="label"><span><?php /* @escapeNotVerified */
+                echo __('ID') ?></span><span class="span">*</span></label>
+        <div class="control">
+            <input type="number" name="hmu_id" id="hmu_id" value="" title="<?php /* @escapeNotVerified */
+            echo __('Hmu id') ?>" class="input-text">
+        </div>
+    </div>
+    <br/>
+    <div class="field required">
+        <label for="email_address" class="label"><span><?php /* @escapeNotVerified */
+                echo __('Address') ?></span><span class="span">*</span></label>
+        <div class="control">
+            <input type="text" name="hmu_salary" id="hmu_address" value="" title="<?php /* @escapeNotVerified */
+            echo __('Address') ?>" class="input-text">
+        </div>
+    </div>
+    <br/>
+    <div class="primary">
+        <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */
+        echo __('Submit') ?>"><span><?php /* @escapeNotVerified */
+                echo __('Submit') ?></span></button>
+    </div>
+    <div><input name="form_key" type="hidden" value="<?php /* @escapeNotVerified */
+        echo $block->getFormKey() ?>"/></div>
+
+
+</form>
+
+
+<table class="data-grid data-grid-draggable" data-role="grid">
+    <thead>
+    <tr>
+        <th class="data-grid-th _sortable _draggable _descend">Id</th>
+        <th class="data-grid-th _sortable _draggable _descend">Name</th>
+        <th class="data-grid-th _sortable _draggable _descend"> edit</th>
+        <th class="data-grid-th _sortable _draggable _descend"> delete</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <?php
+    foreach ($block->getCustomData() as $key => $post) {
+        $actionEdit = $this->getUrl('hmuadmin/hmu/edit/id/' . $post['id']);
+        $actionDelete = $this->getUrl('hmuadmin/hmu/delete/id/' . $post['id']);
+        echo '<tr class="data-row">
+                    <td>' . $post['id'] . '</td>
+                    <td>' . $post['hmu_name'] . '</td>
+                     <td class="post-name"><a href="' . $actionEdit . '"> edit</a></td>
+                     <td class="post-name"><a href="' . $actionDelete . '"> delete</a></td>
+
+                  </tr>';
+    }
+    ?>
+    </tbody>
+</table>

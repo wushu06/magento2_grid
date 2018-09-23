@@ -11,7 +11,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Hmu_Api::data" title="Hook me up" module="Hmu_Api" sortOrder="75" resource="Hmu_Api::data"
-             action="hmuadmin/hmu/index"/>
+
+        <add id="Hmu_Api::list" title="Hook me up" module="Hmu_Api" sortOrder="10" resource="Hmu_Api::list"/>
+        <add id="Hmu_Api::data" title="Hmu list"   module="Hmu_Api" sortOrder="1"  parent="Hmu_Api::list" action="hmuadmin/hmu/index" resource="Hmu_Api::form"/>
+        <add id="Hmu_Api::form" title="Hmu form"   module="Hmu_Api" sortOrder="2"  parent="Hmu_Api::list" action="hmuadmin/hmu/form"  resource="Hmu_Api::form"/>
     </menu>
 </config>

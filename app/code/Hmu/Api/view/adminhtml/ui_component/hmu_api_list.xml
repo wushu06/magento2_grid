@@ -92,6 +92,20 @@
                 </item>
             </argument>
         </filters>
+
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="sample/data/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
         <paging name="listing_paging">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -105,6 +119,17 @@
         </paging>
     </container>
     <columns name="hmu_api_columns">
+        <settings>
+            <editorConfig>
+                <param name="indexField" xsi:type="string">id</param>
+                <param name="enabled" xsi:type="boolean">false</param>
+            </editorConfig>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>data_id</indexField>
+            </settings>
+        </selectionsColumn>
         <column name="id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -151,6 +176,7 @@
                 </item>
             </argument>
         </column>
+
         <actionsColumn name="actions" class="Hmu\Api\Ui\Component\Listing\Columns\HmuActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
